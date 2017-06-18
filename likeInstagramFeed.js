@@ -1,25 +1,25 @@
 (function () {
     'use strict';
     window.scrollTo(0, document.body.scrollHeight);
-    var likeElements = document.querySelectorAll(".coreSpriteHeartOpen");
+    var likeElements = document.querySelectorAll(".coreSpriteLikeHeartOpen");
     var likeCount = 0;
     var nextTime = 1000;
 
-    function doLike(i) {
-        likeElements[i].click();
+    function doLike(photo) {
+        photo.click();
     }
 
-    for (var i = 0; i < likeElements.length; i++) {
+    likeElements.forEach(photo => {
         nextTime = Math.random() * (14000 - 4000) + 4000;
         console.log(nextTime);
         console.log("Like: " + likeCount);
         likeCount++;
-        if (likeCount > 10) {
+        if (likeCount > 5) {
             console.log("too much liking !");
-            break;
+            return
         } else {
-            setTimeout(doLike(i), nextTime);
+            setTimeout(doLike(photo), nextTime);
         }
-    }
+    });
 
 })();
